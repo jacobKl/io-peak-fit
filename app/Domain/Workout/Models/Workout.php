@@ -8,8 +8,8 @@ class Workout extends Model
 {
     protected $fillable = ['user_id', 'date', 'description'];
 
-    public function exercises()
+    public function workoutExercises()
     {
-        return $this->hasMany(Exercise::class);
+        return $this->hasMany(WorkoutExercise::class);
     }
 }

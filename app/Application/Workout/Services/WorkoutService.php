@@ -4,21 +4,20 @@ namespace App\Application\Workout\Services;
 
 use App\Application\Workout\DTOs\WorkoutDTO;
 use App\Domain\Workout\Contracts\WorkoutRepositoryInterface;
-use App\Domain\Workout\Contracts\ExerciseRepositoryInterface;
-use App\Domain\Workout\Models\Exercise;
+use App\Domain\Workout\Contracts\WorkoutExerciseRepositoryInterface;
 use App\Domain\Workout\Models\Workout;
-use App\Infrastructure\Workout\Persistence\EloquentExerciseRepository;
+use App\Infrastructure\Workout\Persistence\EloquentWorkoutExerciseRepository;
 use App\Infrastructure\Workout\Persistence\EloquentWorkoutRepository;
 
 class WorkoutService
 {
     private WorkoutRepositoryInterface $workoutRepository;
-    private ExerciseRepositoryInterface $excerciseRepository;
+    private WorkoutExerciseRepositoryInterface $workoutExcerciseRepository;
 
-    public function __construct(EloquentWorkoutRepository $workoutRepository, EloquentExerciseRepository $excerciseRepository)
+    public function __construct(EloquentWorkoutRepository $workoutRepository, EloquentWorkoutExerciseRepository $excerciseRepository)
     {
         $this->workoutRepository = $workoutRepository;
-        $this->excerciseRepository = $excerciseRepository;
+        $this->workoutExcerciseRepository = $excerciseRepository;
     }
 
     public function createWorkout(WorkoutDTO $dto)
@@ -30,7 +29,7 @@ class WorkoutService
         ]);
 
         foreach ($dto->exercises as $exercise) {
-            $this->excerciseRepository->create([
+            $this->workoutExcerciseRepository->create([
                 'workout_id' => $workout->id,
                 ...$exercise
             ]);
@@ -41,6 +40,6 @@ class WorkoutService
 
     public function getWorkout(int $id): ?Workout
     {
-        return Workout::with('exercises')->where('id', $id)->first();
+        return Workout::with('workoutExercises')->where('id', $id)->first();
     }
 }

@@ -17,6 +17,10 @@ class WorkoutController extends Controller
         $this->workoutService = $workoutService;
     }
 
+    public function create(Request $request) {
+        return view('create-workout');
+    }
+
     public function store(Request $request)
     {
         $dto = new WorkoutDTO(

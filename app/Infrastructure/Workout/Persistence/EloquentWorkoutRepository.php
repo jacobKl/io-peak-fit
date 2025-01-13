@@ -14,11 +14,11 @@ class EloquentWorkoutRepository implements WorkoutRepositoryInterface
 
     public function findById(int $id): ?Workout
     {
-        return Workout::with('exercises')->where("id", $id)->get();
+        return Workout::with('workoutExercises')->where("id", $id)->get();
     }
 
     public function findByUserId(int $userId): array
     {
-        return Workout::where('user_id', $userId)->with('exercises')->get()->toArray();
+        return Workout::where('user_id', $userId)->with('workoutExercises')->get()->toArray();
     }
 }
