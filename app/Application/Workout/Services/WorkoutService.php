@@ -31,4 +31,9 @@ class WorkoutService
     {
         return Workout::with('workoutExercises')->where('id', $id)->first();
     }
+
+    public function getUserWorkouts()
+    {
+        return $this->workoutRepository->findByUserId(1);
+    }
 }

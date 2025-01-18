@@ -8,5 +8,5 @@ interface WorkoutRepositoryInterface
 {
     public function create(array $data): Workout;
     public function findById(int $id): ?Workout;
-    public function findByUserId(int $userId): array;
+    public function findByUserId(int $userId);
 }

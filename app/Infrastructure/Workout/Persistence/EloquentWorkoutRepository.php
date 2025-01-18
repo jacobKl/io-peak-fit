@@ -17,8 +17,8 @@ class EloquentWorkoutRepository implements WorkoutRepositoryInterface
         return Workout::with('workoutExercises')->where("id", $id)->get();
     }
 
-    public function findByUserId(int $userId): array
+    public function findByUserId(int $userId)
     {
-        return Workout::where('user_id', $userId)->with('workoutExercises')->get()->toArray();
+        return Workout::where('user_id', $userId)->with('workoutExercises')->get();
     }
 }
