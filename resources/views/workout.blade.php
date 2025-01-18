@@ -17,3 +17,24 @@
 
     <button>Submit</button>
 </form>
+
+<table border="1">
+    <thead>
+        <tr>
+            <td>Exercise</td>
+            <td>Reps</td>
+            <td>Sets</td>
+            <td>Weight</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach($workout->workoutExercises as $exercise)
+            <tr>
+                <td>{{ $exercise->exercise->name }}</td>
+                <td>{{ $exercise->repetitions }}</td>
+                <td>{{ $exercise->sets }}</td>
+                <td>{{ $exercise->weight }}</td>
+            </tr>
+        @endforeach
+    </tbody>
+</table>

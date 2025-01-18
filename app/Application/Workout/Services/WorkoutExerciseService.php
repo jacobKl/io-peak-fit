@@ -16,10 +16,8 @@ class WorkoutExerciseService
         $this->workoutExerciseRepository = $workoutExerciseRepository;
     }
 
-    public function createWorkoutExercise(Workout $workout,WorkoutExerciseDTO $dto)
+    public function createWorkoutExercise(Workout $workout, WorkoutExerciseDTO $dto)
     {
-        //dd($dto);
-
         $workoutExercise = $this->workoutExerciseRepository->create([
             'workout_id' => $workout->id,
             'exercise_id'=> $dto->exerciseId,

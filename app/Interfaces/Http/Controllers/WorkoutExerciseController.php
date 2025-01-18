@@ -12,14 +12,13 @@ class WorkoutExerciseController extends Controller
 {
     public function __construct(
         private WorkoutExerciseService $workoutExerciseService
-    )
-    {
-        
+    ) {
     }
 
-    public function store(Request $request, Workout $workout, WorkoutExerciseDTO $dto) {
-        
+    public function store(Request $request, Workout $workout, WorkoutExerciseDTO $dto)
+    {
         $this->workoutExerciseService->createWorkoutExercise($workout, $dto);
-        return to_route('workout.show',['workout' => $workout->id]);
+
+        return to_route('workout.show', ['workout' => $workout->id]);
     }
 }

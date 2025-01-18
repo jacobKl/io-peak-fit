@@ -7,7 +7,7 @@ use App\Application\Workout\DTOs\WorkoutDTO;
 use App\Application\Workout\Services\WorkoutService;
 use App\Domain\Workout\Models\Workout;
 use App\Infrastructure\Workout\Persistence\EloquentExerciseRepository;
-use Illuminate\View\View;
+use Illuminate\Http\Request;
 
 class WorkoutController extends Controller
 {
@@ -23,13 +23,12 @@ class WorkoutController extends Controller
     public function create()
     {
         $workouts = $this->workoutService->getUserWorkouts();
-        // dd($workouts);
         return view('create-workout', ['workouts' => $workouts]);
     }
 
     public function store(WorkoutDTO $dto)
     {
-        $workout = $this->workoutService->createWorkout($dto);
+        $this->workoutService->createWorkout($dto);
 
         return to_route('workout');
     }
@@ -41,7 +40,12 @@ class WorkoutController extends Controller
         return response()->json(['workout' => $workout]);
     }
 
-    public function show(Workout $workout) {
+    public function show(Request $request)
+    {
+        $workoutId = $request->route('workout');
+
+        $workout = Workout::with(['workoutExercises.exercise'])->where('id', $workoutId)->firstOrFail();
+
         return view('workout', ['workout' => $workout, 'exercises' => $this->exerciseRepository->getAll()]);
     }
 }

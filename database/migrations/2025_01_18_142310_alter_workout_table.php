@@ -12,10 +12,8 @@ return new class extends Migration
     public function up(): void
     {
         Schema::table('workout_exercises', function (Blueprint $table) {
-            
             $table->dropColumn('name');
             $table->integer('exercise_id');
-
         });
     }
 
