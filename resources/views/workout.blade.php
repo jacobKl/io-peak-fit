@@ -3,6 +3,17 @@
     {{ $workout->description }}
 </p>
 
-@php
- dd($exercises);
-@endphp
+<form method="POST" action="">
+    @csrf
+    <select>
+       @foreach ($exercises as $exercise)
+           <option value='{{$exercise->id}}'> {{$exercise->name}} </option>
+       @endforeach
+    </select>
+
+    <input type="number" name="repetitions" required placeholder="reps"> 
+    <input type="number" name="sets" required placeholder="sets">
+    <input type="number" name="weight" required placeholder="weight">
+
+    <button>Submit</button>
+</form>
