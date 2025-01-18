@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::table('workout_exercises', function (Blueprint $table) {
             
             $table->dropColumn('name');
+            $table->integer('exercise_id');
 
         });
     }
