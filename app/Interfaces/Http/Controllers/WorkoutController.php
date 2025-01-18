@@ -17,25 +17,18 @@ class WorkoutController extends Controller
         $this->workoutService = $workoutService;
     }
 
-    public function create(Request $request) {
+    public function create() {
         return view('create-workout');
     }
 
-    public function store(Request $request)
+    public function store(WorkoutDTO $dto)
     {
-        $dto = new WorkoutDTO(
-            $request->userId, // PLACEHOLDER
-            $request->date,
-            $request->description,
-            $request->exercises
-        );
-
         $workout = $this->workoutService->createWorkout($dto);
 
         return response()->json(['workout' => $workout]);
     }
 
-    public function getWorkout(Request $request, int $id)
+    public function getWorkout(int $id)
     {
         $workout = $this->workoutService->getWorkout($id);
 
