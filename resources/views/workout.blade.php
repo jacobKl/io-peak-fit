@@ -44,4 +44,10 @@
             @endforeach
         </tbody>
     </table>
+
+    <form method="POST" action="{{ route('workout.delete', ['workout' => $workout->id]) }}">
+        @csrf
+        @method('DELETE')
+        <button type="submit" onclick="return confirm('are you siur?')">Delete workout</button>
+    </form>
 </main>

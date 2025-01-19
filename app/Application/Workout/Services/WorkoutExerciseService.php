@@ -28,4 +28,9 @@ class WorkoutExerciseService
 
         return $workoutExercise;
     }
+
+    public function deleteWorkoutExercises(Workout $workout)
+    {
+        
+    }
 }

@@ -21,4 +21,9 @@ class EloquentWorkoutExerciseRepository implements WorkoutExerciseRepositoryInte
     {
         return WorkoutExercise::where('user_id', $userId)->with('workoutExercises')->get()->toArray();
     }
+
+    public function delete(int $id): void
+    {
+        
+    }
 }

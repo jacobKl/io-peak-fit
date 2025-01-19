@@ -48,4 +48,11 @@ class WorkoutController extends Controller
 
         return view('workout', ['workout' => $workout, 'exercises' => $this->exerciseRepository->getAll()]);
     }
+
+    public function delete(Request $request, int $workoutId)
+    {
+        $this->workoutService->deleteWorkout($workoutId);
+
+        return to_route('workout')->with('success', 'Workout deleted');
+    }
 }

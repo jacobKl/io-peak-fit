@@ -14,10 +14,10 @@
     </form>
 
     @foreach ($workouts as $workout)
-    <div>
+    <div class=workout-box>
         <a href="{{route('workout.show', ['workout' => $workout->id])}}">
             Trening {{ $workout->date }}
         </a>
-    </div>
+        </div>
     @endforeach
 </main>

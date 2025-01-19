@@ -9,4 +9,6 @@ interface WorkoutRepositoryInterface
     public function create(array $data): Workout;
     public function findById(int $id): ?Workout;
     public function findByUserId(int $userId);
+
+    public function delete(int $id): bool;
 }

@@ -21,4 +21,13 @@ class EloquentWorkoutRepository implements WorkoutRepositoryInterface
     {
         return Workout::where('user_id', $userId)->with('workoutExercises')->get();
     }
+
+    public function delete(int $id): bool
+    {
+        $workout = Workout::findOrFail($id);
+        echo 'sssss';
+        //$workout->workoutExercises()->delete();
+        return $workout->delete();
+    }
+
 }
