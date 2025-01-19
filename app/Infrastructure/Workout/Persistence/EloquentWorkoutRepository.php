@@ -25,8 +25,7 @@ class EloquentWorkoutRepository implements WorkoutRepositoryInterface
     public function delete(int $id): bool
     {
         $workout = Workout::findOrFail($id);
-        echo 'sssss';
-        //$workout->workoutExercises()->delete();
+        $workout->workoutExercises()->delete();
         return $workout->delete();
     }
 

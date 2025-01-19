@@ -29,8 +29,8 @@ class WorkoutExerciseService
         return $workoutExercise;
     }
 
-    public function deleteWorkoutExercises(Workout $workout)
+    public function deleteWorkoutExercises(Workout $workout): void
     {
-        
+        $this->workoutExerciseRepository->deleteByWorkoutId($workout->id);
     }
 }

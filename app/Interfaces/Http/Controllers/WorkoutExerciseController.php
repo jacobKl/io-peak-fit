@@ -21,4 +21,6 @@ class WorkoutExerciseController extends Controller
 
         return to_route('workout.show', ['workout' => $workout->id]);
     }
+
+
 }
