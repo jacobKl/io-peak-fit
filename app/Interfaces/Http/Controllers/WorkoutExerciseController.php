@@ -36,4 +36,12 @@ class WorkoutExerciseController extends Controller
     {
         return view('workout-exercise', ['workoutExercise' => $workoutExercise, 'exercises' => $this->exerciseRepository->getAll()]);
     }
+
+    public function edit(Request $request, WorkoutExerciseDTO $dto)
+    {
+        $this->workoutExerciseService->edit($request->route('workoutExercise'), $dto);
+        $workout = $request->route('workout');
+        return to_route('workout.show', ['workout' => $workout]);
+    
+    }
 }

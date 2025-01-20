@@ -39,4 +39,20 @@ class WorkoutExerciseService
     {
         $this->workoutExerciseRepository->delete($workoutExercise->id);
     }
+
+    public function edit(int $workoutExerciseId, WorkoutExerciseDTO $dto)
+    {
+        $workoutExercise = $this->workoutExerciseRepository->edit(
+            $workoutExerciseId,
+            [
+                'workout_id' => $dto->workoutId,
+                'exercise_id' => $dto->exerciseId,
+                'repetitions' => $dto->repetitions,
+                'sets' => $dto->sets,
+                'weight' => $dto->weight
+            ]
+        );
+
+        return $workoutExercise;
+    }
 }

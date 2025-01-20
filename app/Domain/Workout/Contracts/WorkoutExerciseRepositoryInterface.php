@@ -12,4 +12,5 @@ interface WorkoutExerciseRepositoryInterface
 
     public function deleteByWorkoutId(int $workoutId): void;
     public function delete(int $id): bool;
+    public function edit(int $id, array $data): bool;
 }

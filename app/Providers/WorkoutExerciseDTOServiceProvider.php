@@ -15,6 +15,7 @@ class WorkoutExerciseDTOServiceProvider extends ServiceProvider
             $request = $app->make(Request::class);
 
             return new WorkoutExerciseDTO(
+                $request->input('workout_id'),
                 $request->input('exercise_id'),
                 $request->input('repetitions'),
                 $request->input('sets'),

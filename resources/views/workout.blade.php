@@ -11,6 +11,7 @@
 
     <form method="POST" action="{{ route('exercise.store', [ 'workout' => $workout->id ]) }}">
         @csrf
+        <input type="hidden" name="wokrout_id" value="{{ $workout->id }}">
         <select name="exercise_id">
         @foreach ($exercises as $exercise)
             <option value='{{$exercise->id}}'> {{$exercise->name}} </option>

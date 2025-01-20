@@ -1,5 +1,12 @@
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css"
+>
+
 <form method="POST" action="{{ route('workoutExercise.edit', [ 'workout' => $workoutExercise->workout_id, 'workoutExercise' => $workoutExercise->id]) }}">
     @csrf
+    @method('PUT')
+    <input type="hidden" name="workout_id" value="{{ $workoutExercise->workout_id }}">
     <select name="exercise_id">
     @foreach ($exercises as $exercise)
         <option value='{{$exercise->id}}' 

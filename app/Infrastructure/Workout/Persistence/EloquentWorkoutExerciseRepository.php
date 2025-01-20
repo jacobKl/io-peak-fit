@@ -32,4 +32,11 @@ class EloquentWorkoutExerciseRepository implements WorkoutExerciseRepositoryInte
         $workoutExercise = WorkoutExercise::findOrFail($id);
         return $workoutExercise->delete();
     }
+
+    public function edit(int $id, array $data): bool {
+        $workoutExercise = WorkoutExercise::findOrFail($id);
+        $workoutExercise->fill($data);
+        
+        return $workoutExercise->save();
+    }
 }
