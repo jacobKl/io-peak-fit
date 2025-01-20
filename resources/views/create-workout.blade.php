@@ -5,12 +5,19 @@
 
 <main class="container">
     <h2>Dodaj trening</h2>
-    <form method="POST" action="{{ route('workout.store') }}">
+    <a href="/month-summary">
+        Sprawdź swoje podsumowanie miesiąca.
+    </a>
+    <br/>
+
+    <form method="POST" action="{{ route('workout.store') }}" class="grid">
         @csrf
         <input type="hidden" name="userId" value="1">
         <input type="datetime-local" name="date">
         <textarea name="description" placeholder="Description"></textarea>
-        <button>Submit</button>
+        <div>
+            <button>Submit</button>
+        </div>
     </form>
 
     @foreach ($workouts as $workout)

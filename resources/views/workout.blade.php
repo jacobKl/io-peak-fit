@@ -9,9 +9,9 @@
         {{ $workout->description }}
     </p>
 
-    <form method="POST" action="{{ route('exercise.store', [ 'workout' => $workout->id ]) }}">
+    <form method="POST" action="{{ route('exercise.store', [ 'workout' => $workout->id ]) }}" class="grid">
         @csrf
-        <input type="hidden" name="wokrout_id" value="{{ $workout->id }}">
+        <input type="hidden" name="workout_id" value="{{ $workout->id }}">
         <select name="exercise_id">
         @foreach ($exercises as $exercise)
             <option value='{{$exercise->id}}'> {{$exercise->name}} </option>
@@ -22,7 +22,9 @@
         <input type="number" name="sets" required placeholder="sets">
         <input type="number" name="weight" required placeholder="weight">
 
-        <button>Submit</button>
+        <div>
+            <button>Submit</button>
+        </div>
     </form>
 
     <table border="1">
@@ -43,14 +45,18 @@
                     <td>{{ $workoutExercise->sets }}</td>
                     <td>{{ $workoutExercise->weight }}</td>
                     <td>
-                        <form method="POST" action="{{ route('workoutExercise.delete', ['workout' => $workout->id, 'workoutExercise' => $workoutExercise->id]) }}">
-                            @csrf
-                            @method('DELETE')
-                            <button type="submit">Delete</button>
-                        </form>
-                        <button><a href="{{route('workoutExercise.show', ['workout' => $workout->id, 'workoutExercise' => $workoutExercise->id])}}">
-                            Edit
-                        </a></button>
+                        <div class="grid">
+                            <form method="POST" action="{{ route('workoutExercise.delete', ['workout' => $workout->id, 'workoutExercise' => $workoutExercise->id]) }}">
+                                @csrf
+                                @method('DELETE')
+                                <button type="submit">Delete</button>
+                            </form>
+                            <div>
+                                <button><a style="color: white;" href="{{route('workoutExercise.show', ['workout' => $workout->id, 'workoutExercise' => $workoutExercise->id])}}">
+                                    Edit
+                                </a></button>
+                            </div>
+                        </div>
                     </td>
                 </tr>
             @endforeach

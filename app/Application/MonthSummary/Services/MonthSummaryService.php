@@ -32,7 +32,7 @@ class MonthSummaryService {
             fn ($acc, WorkoutExercise $exercise) => [
                 'repetitions' => $acc['repetitions'] + $exercise->repetitions,
                 'sets' => $acc['sets'] + $exercise->sets,
-                'weight' => $acc['weight'] + $exercise->weight,
+                'weight' => $acc['weight'] + $exercise->weight * $exercise->repetitions * $exercise->sets,
             ],
             ['repetitions' => 0, 'sets' => 0, 'weight' => 0]
         );

@@ -10,15 +10,15 @@
 
     <div class="grid">
         <p>
-            Wykonałeś {{ $analysis['workout_count'] }} treningów
+            Wykonałeś <b>{{ $analysis['workout_count'] }}</b> treningów
         </p>
 
         <p>
-            Zrobiłeś {{ $analysis['repetitions'] }} powtórzeń, {{ $analysis['sets'] }} serii
+            Zrobiłeś <b>{{ $analysis['repetitions'] }}</b> powtórzeń, <b>{{ $analysis['sets'] }}</b> serii
         </p>
 
         <p>
-            Przerzuciłeś {{ $analysis['weight'] }} KG!
+            Przerzuciłeś <b>{{ $analysis['weight'] }}</b> KG!
         </p>
     </div>
 </main>
