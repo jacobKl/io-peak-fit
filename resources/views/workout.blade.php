@@ -47,6 +47,9 @@
                             @method('DELETE')
                             <button type="submit">Delete</button>
                         </form>
+                        <button><a href="{{route('workoutExercise.show', ['workout' => $workout->id, 'workoutExercise' => $workoutExercise->id])}}">
+                            Edit
+                        </a></button>
                     </td>
                 </tr>
             @endforeach
