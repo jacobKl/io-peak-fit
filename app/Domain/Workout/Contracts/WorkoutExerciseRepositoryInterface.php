@@ -11,4 +11,5 @@ interface WorkoutExerciseRepositoryInterface
     public function findByUserId(int $userId): array;
 
     public function deleteByWorkoutId(int $workoutId): void;
+    public function delete(int $id): bool;
 }

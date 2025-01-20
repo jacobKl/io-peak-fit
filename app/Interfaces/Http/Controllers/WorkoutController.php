@@ -51,8 +51,6 @@ class WorkoutController extends Controller
 
     public function delete(Request $request, int $workoutId)
     {
-        $workout = Workout::findOrFail($workoutId);
-        $workout->workoutExercises()->delete();
         $this->workoutService->deleteWorkout($workoutId);
         return to_route('workout');
     }

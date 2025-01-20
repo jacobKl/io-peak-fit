@@ -5,6 +5,7 @@ namespace App\Application\Workout\Services;
 use App\Application\Workout\DTOs\WorkoutExerciseDTO;
 use App\Domain\Workout\Contracts\WorkoutExerciseRepositoryInterface;
 use App\Domain\Workout\Models\Workout;
+use App\Domain\Workout\Models\WorkoutExercise;
 use App\Infrastructure\Workout\Persistence\EloquentWorkoutExerciseRepository;
 
 class WorkoutExerciseService
@@ -32,5 +33,10 @@ class WorkoutExerciseService
     public function deleteWorkoutExercises(Workout $workout): void
     {
         $this->workoutExerciseRepository->deleteByWorkoutId($workout->id);
+    }
+
+    public function delete(WorkoutExercise $workoutExercise)
+    {
+        $this->workoutExerciseRepository->delete($workoutExercise->id);
     }
 }

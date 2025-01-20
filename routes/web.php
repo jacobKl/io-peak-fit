@@ -10,5 +10,5 @@ Route::post('/', [WorkoutController::class, 'store'])->name('workout.store');
 Route::get('/workout/{workout}', [WorkoutController::class, 'show'])->name('workout.show');
 Route::post('/workout/{workout}/store', [WorkoutExerciseController::class, 'store'])->name('exercise.store');
 Route::delete('/workout/{workout}', [WorkoutController::class, 'delete'])->name('workout.delete');
-
+Route::delete('/workout/{workout}/workout-exercise/{workoutExercise}', [WorkoutExerciseController::class, 'delete'])->name('workoutExercise.delete');
 Route::get('/month-summary', [MonthSummaryController::class, 'index'])->name('month-summary');

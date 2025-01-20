@@ -26,4 +26,10 @@ class EloquentWorkoutExerciseRepository implements WorkoutExerciseRepositoryInte
     {
         WorkoutExercise::where('workout_id', $workoutId)->delete();
     }
+
+    public function delete(int $id): bool
+    {
+        $workoutExercise = WorkoutExercise::findOrFail($id);
+        return $workoutExercise->delete();
+    }
 }

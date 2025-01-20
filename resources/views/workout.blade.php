@@ -31,15 +31,23 @@
                 <td>Reps</td>
                 <td>Sets</td>
                 <td>Weight</td>
+                <td>Options</td>
             </tr>
         </thead>
         <tbody>
-            @foreach($workout->workoutExercises as $exercise)
+            @foreach($workout->workoutExercises as $workoutExercise)
                 <tr>
-                    <td>{{ $exercise->exercise->name }}</td>
-                    <td>{{ $exercise->repetitions }}</td>
-                    <td>{{ $exercise->sets }}</td>
-                    <td>{{ $exercise->weight }}</td>
+                    <td>{{ $workoutExercise->exercise->name }}</td>
+                    <td>{{ $workoutExercise->repetitions }}</td>
+                    <td>{{ $workoutExercise->sets }}</td>
+                    <td>{{ $workoutExercise->weight }}</td>
+                    <td>
+                        <form method="POST" action="{{ route('workoutExercise.delete', ['workout' => $workout->id, 'workoutExercise' => $workoutExercise->id]) }}">
+                            @csrf
+                            @method('DELETE')
+                            <button type="submit">Delete</button>
+                        </form>
+                    </td>
                 </tr>
             @endforeach
         </tbody>
